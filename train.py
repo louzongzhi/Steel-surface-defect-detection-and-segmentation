@@ -10,7 +10,7 @@ import glob
 
 from data_loader import *
 
-from model import MINet
+from model import self_net
 
 import pytorch_ssim
 
@@ -84,7 +84,7 @@ def multi_loss_function(d1, d2, d3, d4, d5, labels_v):
 
 # ------- define model --------
 # define the net
-net = MINet()
+net = self_net()
 if torch.cuda.is_available():
     net.cuda()
 

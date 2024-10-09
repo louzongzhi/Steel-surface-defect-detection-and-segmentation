@@ -26,7 +26,7 @@ def computeTime(model, device='cuda'):
 
 torch.backends.cudnn.benchmark = True
 
-from model import MINet
-model = MINet()
+from model import self_net
+model = self_net()
 
 computeTime(model)

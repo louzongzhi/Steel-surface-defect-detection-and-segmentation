@@ -1,1 +1,1 @@
-from .MINet import MINet
+from .model import self_net

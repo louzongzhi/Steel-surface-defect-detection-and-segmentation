@@ -2,9 +2,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from .basic import *
 
-class MINet(nn.Module):
+class self_net(nn.Module):
     def __init__(self):
-        super(MINet, self).__init__()
+        super(self_net, self).__init__()
         #MI-based real-time backbone
         ##stage 1
         self.encoder1 = convbnrelu(3, 16, k=3, s=2, p=1)

@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from data_loader import *
 
-from model import MINet
+from model import self_net
 
 
 def normPRED(x):
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     # --------- Define the model ---------
     print("...load MINet...")
-    net = MINet()
+    net = self_net()
     net.load_state_dict(torch.load(model_dir))
     if torch.cuda.is_available():
         net.cuda()
