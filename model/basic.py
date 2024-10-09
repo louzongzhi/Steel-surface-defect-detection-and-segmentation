@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 
 class convbnrelu(nn.Module):
@@ -29,12 +30,12 @@ class DSConv3x3(nn.Module):
 
 class ConvOut(nn.Module):
 
-    def __init__(self, in_channel):
+    def __init__(self, in_channel, num_classes):
         super(ConvOut, self).__init__()
-        self.conv = nn.Sequential(nn.Dropout2d(p=0.1), nn.Conv2d(in_channel, 1, 1, stride=1, padding=0), nn.Sigmoid())
+        self.conv = nn.Sequential(nn.Dropout2d(p=0.1), nn.Conv2d(in_channel, num_classes, 1, stride=1, padding=0))
 
     def forward(self, x):
-        return self.conv(x)
+        return F.softmax(self.conv(x), dim=1)
 
 
 class MI_Module(nn.Module):  # Multiscale Interactive Module

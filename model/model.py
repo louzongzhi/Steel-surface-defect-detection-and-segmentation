@@ -3,8 +3,10 @@ import torch.nn.functional as F
 from .basic import *
 
 class self_net(nn.Module):
-    def __init__(self):
+    def __init__(self, num_classes=4):
         super(self_net, self).__init__()
+        self.num_classes = num_classes
+
         #MI-based real-time backbone
         ##stage 1
         self.encoder1 = convbnrelu(3, 16, k=3, s=2, p=1)
@@ -77,11 +79,11 @@ class self_net(nn.Module):
         )
 
         #Output
-        self.conv_out1 = ConvOut(in_channel=16)
-        self.conv_out2 = ConvOut(in_channel=16)
-        self.conv_out3 = ConvOut(in_channel=32)
-        self.conv_out4 = ConvOut(in_channel=64)
-        self.conv_out5 = ConvOut(in_channel=96)
+        self.conv_out1 = ConvOut(in_channel=16, num_classes=num_classes)
+        self.conv_out2 = ConvOut(in_channel=16, num_classes=num_classes)
+        self.conv_out3 = ConvOut(in_channel=32, num_classes=num_classes)
+        self.conv_out4 = ConvOut(in_channel=64, num_classes=num_classes)
+        self.conv_out5 = ConvOut(in_channel=96, num_classes=num_classes)
 
     def forward(self, x):
         #MI-based real-time backbone
